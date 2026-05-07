@@ -12,4 +12,18 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  vite: {
+    preview: {
+      allowedHosts: [
+        "trustable.coolify.qualix.ai",
+        ".coolify.qualix.ai", // Allow all subdomains
+      ],
+    },
+    server: {
+      allowedHosts: [
+        "trustable.coolify.qualix.ai",
+        ".coolify.qualix.ai", // Allow all subdomains
+      ],
+    },
+  },
 });
