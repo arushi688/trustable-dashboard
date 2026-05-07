@@ -417,10 +417,10 @@ function LabReport() {
               <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Testing Timeline</p>
               <ol className="relative space-y-5 border-l-2 border-border/70 pl-6">
                 {[
-                  { d: "Aug 02", t: "Sample collected — Batch SLACH003" },
-                  { d: "Aug 04", t: "Heavy metals & microbiology assays" },
-                  { d: "Aug 06", t: "Protein content & macro verification" },
-                  { d: "Aug 09", t: "Final report — third-party signed off" },
+                  { d: "", t: "Sample collected — Batch SLACH003" },
+                  { d: "", t: "Heavy metals & microbiology assays" },
+                  { d: "", t: "Protein content & macro verification" },
+                  { d: "", t: "Final report — third-party signed off" },
                 ].map((s, i) => (
                   <li key={i} className="relative">
                     <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-primary ring-4 ring-background" />
@@ -711,12 +711,7 @@ function Traceability() {
               ))}
             </ol>
 
-            <div className="mt-6 flex h-44 items-center justify-center overflow-hidden rounded-2xl border border-dashed border-border bg-gradient-to-br from-secondary/20 to-accent/20 text-sm text-muted-foreground">
-              <div className="text-center">
-                <Globe2 className="mx-auto mb-2 h-7 w-7" />
-                Interactive sourcing map
-              </div>
-            </div>
+          
           </GlassCard>
 
           <div className="space-y-4">
