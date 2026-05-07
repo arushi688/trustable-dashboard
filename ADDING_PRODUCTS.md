@@ -1,0 +1,299 @@
+# Adding New Products
+
+This guide explains how to add new products to the Trustable platform.
+
+## 🎯 Product Structure
+
+Each product has:
+- ✅ A unique route (e.g., `/hazelnut-chocolate`, `/vanilla-cream`)
+- ✅ Its own detailed product page
+- ✅ Product information, lab reports, and traceability
+- ✅ QR code that links to its specific page
+
+## 📋 Step-by-Step Guide
+
+### 1. Add Product to Home Page Catalog
+
+Edit `src/routes/index.tsx` and add your product to the `PRODUCTS` array:
+
+```typescript
+const PRODUCTS = [
+  {
+    id: "hazelnut-chocolate",
+    name: "Hazelnut Chocolate",
+    slug: "/hazelnut-chocolate",
+    description: "15g plant protein, 23 vitamins & minerals, 0 added sugar",
+    image: productImg,
+    calories: 110,
+    protein: "15g",
+    available: true,
+    highlights: ["Complete amino profile", "Gentle digestion", "1B CFU probiotics"],
+  },
+  // Add your new product here:
+  {
+    id: "vanilla-cream",
+    name: "Vanilla Cream",
+    slug: "/vanilla-cream",
+    description: "Smooth vanilla flavor with complete nutrition",
+    image: vanillaImg, // Import at the top
+    calories: 115,
+    protein: "15g",
+    available: true, // or false for "Coming Soon"
+    highlights: ["Natural vanilla", "Easy mixing", "Dairy-free"],
+  },
+];
+```
+
+### 2. Create Product Assets
+
+Add product-specific assets to `src/assets/`:
+```
+src/assets/
+├── vanilla-cream-product.png          # Product image
+└── Vanilla_Cream_Lab_Report.pdf       # Lab report PDF
+```
+
+### 3. Create Product Page Route
+
+Duplicate an existing product page:
+
+```bash
+cp src/routes/hazelnut-chocolate.tsx src/routes/vanilla-cream.tsx
+```
+
+### 4. Update the New Product Page
+
+Edit `src/routes/vanilla-cream.tsx`:
+
+#### a. Update the route definition (top of file):
+
+```typescript
+import vanillaImg from "@/assets/vanilla-cream-product.png";
+import vanillaReportPdf from "@/assets/Vanilla_Cream_Lab_Report.pdf";
+
+export const Route = createFileRoute("/vanilla-cream")({
+  component: VanillaCream,  // Change from HazelnutChocolate
+  head: () => ({
+    meta: [
+      { title: "Trustable — Vanilla Cream | Daily Nutrition Blend" },
+      { name: "description", content: "Smooth vanilla plant-based nutrition..." },
+      // ... update other meta tags
+    ],
+  }),
+});
+```
+
+#### b. Update the component name:
+
+```typescript
+function VanillaCream() {  // Was HazelnutChocolate
+  const [active, setActive] = useState("overview");
+  // ... rest of component
+}
+```
+
+#### c. Update product-specific content:
+
+- **Hero section**: Update product name, flavor description
+- **INGREDIENTS**: Modify ingredients list if different
+- **QUICK_STATS**: Update nutrition facts
+- **Product image**: Use `vanillaImg` instead of `productImg`
+- **Lab report PDF**: Use `vanillaReportPdf` for download
+
+#### d. Update product-specific text:
+
+Search and replace:
+- "Hazelnut Chocolate" → "Vanilla Cream"
+- Update flavor descriptions
+- Modify any flavor-specific benefits
+
+### 5. Import Product Image on Home Page
+
+Edit `src/routes/index.tsx`:
+
+```typescript
+import productImg from "@/assets/product-front.png";
+import vanillaImg from "@/assets/vanilla-cream-product.png";  // Add this
+```
+
+### 6. Test Your New Product
+
+```bash
+# Start dev server
+npm run dev
+
+# Visit:
+# - http://localhost:8080/              (home page - should show new product)
+# - http://localhost:8080/vanilla-cream (new product page)
+```
+
+## 🎨 Customization Tips
+
+### Product-Specific Colors
+
+You can customize colors in each product's page by modifying the Tailwind classes:
+
+```typescript
+// Different accent colors for different products
+<div className="bg-gradient-to-r from-purple-500 to-pink-500">
+  {/* Vanilla could use purple/pink */}
+</div>
+
+<div className="bg-gradient-to-r from-green-500 to-emerald-500">
+  {/* Matcha could use green */}
+</div>
+```
+
+### Product Variations
+
+For products with slight variations (e.g., different sizes), you can:
+1. Use the same route
+2. Add a selector on the product page
+3. Or create separate routes: `/hazelnut-chocolate-480g`, `/hazelnut-chocolate-960g`
+
+### Coming Soon Products
+
+Mark products as `available: false` to show "Coming Soon" badge:
+
+```typescript
+{
+  id: "strawberry-cream",
+  name: "Strawberry Cream",
+  slug: "/strawberry-cream",
+  available: false,  // Shows "Coming Soon"
+  // ... other fields
+}
+```
+
+## 📁 Product Page Template Structure
+
+Each product page should have:
+
+1. **Hero Section** - Product image, name, key benefits
+2. **Quick Stats** - Calories, protein, key nutrients
+3. **Tabs Navigation** - Overview, Lab Report, Ingredients, etc.
+4. **Overview** - Product story and benefits
+5. **Lab Report** - Test results with PDF download
+6. **What's Inside** - Detailed ingredients
+7. **Clean Label** - What's NOT in the product
+8. **AI Report** - Nutrition analysis
+9. **Traceability** - Supply chain transparency
+10. **Footer** - Contact info, certifications
+11. **QR Code** - Batch verification
+
+## 🔄 Route Generation
+
+Routes are auto-generated by TanStack Router. After adding a new route file:
+
+```bash
+# The route tree will auto-regenerate on dev server restart
+npm run dev
+```
+
+The generated routes will appear in `src/routeTree.gen.ts` (don't edit this file manually).
+
+## 🚀 Deployment
+
+After adding new products:
+
+1. **Commit changes**:
+   ```bash
+   git add .
+   git commit -m "Add Vanilla Cream product"
+   git push
+   ```
+
+2. **Deploy**:
+   - Coolify will auto-deploy from Git
+   - Or rebuild Docker: `docker build -t trustableui .`
+
+## 🎯 Product Checklist
+
+When adding a new product, ensure:
+
+- [ ] Product added to `PRODUCTS` array in `index.tsx`
+- [ ] Product image added to `src/assets/`
+- [ ] Lab report PDF added to `src/assets/`
+- [ ] New route file created (e.g., `vanilla-cream.tsx`)
+- [ ] Route definition updated with correct path
+- [ ] Component name updated
+- [ ] Product-specific content customized
+- [ ] Meta tags updated for SEO
+- [ ] Images imported correctly
+- [ ] PDF download links to correct file
+- [ ] QR codes working
+- [ ] Tested on dev server
+- [ ] Responsive design verified
+- [ ] All sections have accurate information
+
+## 📝 Example: Complete New Product
+
+Here's a complete example structure for a new "Matcha Green Tea" product:
+
+### File: `src/routes/matcha-green-tea.tsx`
+
+```typescript
+import { createFileRoute } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+// ... all other imports
+import matchaImg from "@/assets/matcha-product.png";
+import matchaReportPdf from "@/assets/Matcha_Lab_Report.pdf";
+
+export const Route = createFileRoute("/matcha-green-tea")({
+  component: MatchaGreenTea,
+  head: () => ({
+    meta: [
+      { title: "Trustable — Matcha Green Tea | Daily Nutrition Blend" },
+      // ... other meta
+    ],
+  }),
+});
+
+// ... TABS, INGREDIENTS, etc. (customized for matcha)
+
+function MatchaGreenTea() {
+  // ... component code
+}
+```
+
+### Update: `src/routes/index.tsx`
+
+```typescript
+import matchaImg from "@/assets/matcha-product.png";
+
+const PRODUCTS = [
+  // ... existing products
+  {
+    id: "matcha-green-tea",
+    name: "Matcha Green Tea",
+    slug: "/matcha-green-tea",
+    description: "Energizing matcha with complete nutrition",
+    image: matchaImg,
+    calories: 105,
+    protein: "15g",
+    available: true,
+    highlights: ["Natural caffeine", "Antioxidants", "Sustained energy"],
+  },
+];
+```
+
+## 🆘 Troubleshooting
+
+**Routes not working?**
+- Restart dev server: `npm run dev`
+- Check that route file is in `src/routes/`
+- Verify route path matches slug in PRODUCTS array
+
+**Images not loading?**
+- Check file path in import
+- Ensure image is in `src/assets/`
+- Verify image file extension matches import
+
+**PDF download not working?**
+- Check PDF file path
+- Ensure PDF is in `src/assets/`
+- Verify `labReportPdf` import is correct
+
+---
+
+**Questions?** Check the existing `hazelnut-chocolate.tsx` as a complete reference implementation.

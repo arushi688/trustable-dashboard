@@ -7,7 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build outputs
 dist
 dist-ssr
 .output
@@ -16,9 +19,18 @@ dist-ssr
 .nitro
 *.local
 
+# Lock files from other package managers
+bun.lock
+pnpm-lock.yaml
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
+
+# Environment variables
+.env
+.env.local
+.env.*.local
 
 # Editor directories and files
 .vscode/*
@@ -30,3 +42,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Docker (optional - keep if you want to ignore docker-compose overrides)
+# docker-compose.override.yml
+
+# OS
+Thumbs.db
