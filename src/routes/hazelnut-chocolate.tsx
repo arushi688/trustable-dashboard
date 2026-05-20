@@ -437,6 +437,60 @@ function LabReport() {
   );
 }
 
+function BatchReportDownload({ prefix }: { prefix: string }) {
+  const [batchNo, setBatchNo] = useState("");
+
+  const handleDownload = () => {
+    if (!batchNo.trim()) return;
+    const link = document.createElement("a");
+    link.href = labReportPdf;
+    link.download = `Trustable_Test_Report_${prefix}${batchNo}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mt-10"
+    >
+      <GlassCard className="p-6">
+        <div className="flex items-center gap-2 mb-3">
+          <Download className="h-5 w-5 text-primary" />
+          <h3 className="font-semibold text-foreground text-sm">Download Batch Test Report</h3>
+        </div>
+        <p className="text-xs text-muted-foreground mb-4">
+          Enter your batch number to download the test report for your specific batch.
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center rounded-xl border border-border/60 bg-background/50 overflow-hidden">
+            <span className="px-3 py-2.5 text-sm font-bold text-primary bg-secondary/30 border-r border-border/60">
+              {prefix}
+            </span>
+            <input
+              type="text"
+              value={batchNo}
+              onChange={(e) => setBatchNo(e.target.value)}
+              placeholder="25001"
+              className="px-3 py-2.5 text-sm bg-transparent outline-none w-28 placeholder:text-muted-foreground/50"
+            />
+          </div>
+          <button
+            onClick={handleDownload}
+            disabled={!batchNo.trim()}
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
+          >
+            <Download className="h-4 w-4" /> Download
+          </button>
+        </div>
+      </GlassCard>
+    </motion.div>
+  );
+}
+
 function Inside() {
   const [open, setOpen] = useState<number | null>(null);
   return (
@@ -486,6 +540,9 @@ function Inside() {
             </motion.button>
           ))}
         </div>
+
+        {/* Batch Report Download */}
+        <BatchReportDownload prefix="HC" />
       </div>
 
       <AnimatePresence>

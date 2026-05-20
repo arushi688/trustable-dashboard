@@ -9,12 +9,30 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TrueProteinRouteImport } from './routes/true-protein'
+import { Route as ProtienHerbsRouteImport } from './routes/protien-herbs'
 import { Route as HazelnutChocolateRouteImport } from './routes/hazelnut-chocolate'
+import { Route as ChocoHazelWheyRouteImport } from './routes/choco-hazel-whey'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TrueProteinRoute = TrueProteinRouteImport.update({
+  id: '/true-protein',
+  path: '/true-protein',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtienHerbsRoute = ProtienHerbsRouteImport.update({
+  id: '/protien-herbs',
+  path: '/protien-herbs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HazelnutChocolateRoute = HazelnutChocolateRouteImport.update({
   id: '/hazelnut-chocolate',
   path: '/hazelnut-chocolate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChocoHazelWheyRoute = ChocoHazelWheyRouteImport.update({
+  id: '/choco-hazel-whey',
+  path: '/choco-hazel-whey',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,37 +43,86 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/choco-hazel-whey': typeof ChocoHazelWheyRoute
   '/hazelnut-chocolate': typeof HazelnutChocolateRoute
+  '/protien-herbs': typeof ProtienHerbsRoute
+  '/true-protein': typeof TrueProteinRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/choco-hazel-whey': typeof ChocoHazelWheyRoute
   '/hazelnut-chocolate': typeof HazelnutChocolateRoute
+  '/protien-herbs': typeof ProtienHerbsRoute
+  '/true-protein': typeof TrueProteinRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/choco-hazel-whey': typeof ChocoHazelWheyRoute
   '/hazelnut-chocolate': typeof HazelnutChocolateRoute
+  '/protien-herbs': typeof ProtienHerbsRoute
+  '/true-protein': typeof TrueProteinRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hazelnut-chocolate'
+  fullPaths:
+    | '/'
+    | '/choco-hazel-whey'
+    | '/hazelnut-chocolate'
+    | '/protien-herbs'
+    | '/true-protein'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hazelnut-chocolate'
-  id: '__root__' | '/' | '/hazelnut-chocolate'
+  to:
+    | '/'
+    | '/choco-hazel-whey'
+    | '/hazelnut-chocolate'
+    | '/protien-herbs'
+    | '/true-protein'
+  id:
+    | '__root__'
+    | '/'
+    | '/choco-hazel-whey'
+    | '/hazelnut-chocolate'
+    | '/protien-herbs'
+    | '/true-protein'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChocoHazelWheyRoute: typeof ChocoHazelWheyRoute
   HazelnutChocolateRoute: typeof HazelnutChocolateRoute
+  ProtienHerbsRoute: typeof ProtienHerbsRoute
+  TrueProteinRoute: typeof TrueProteinRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/true-protein': {
+      id: '/true-protein'
+      path: '/true-protein'
+      fullPath: '/true-protein'
+      preLoaderRoute: typeof TrueProteinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/protien-herbs': {
+      id: '/protien-herbs'
+      path: '/protien-herbs'
+      fullPath: '/protien-herbs'
+      preLoaderRoute: typeof ProtienHerbsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hazelnut-chocolate': {
       id: '/hazelnut-chocolate'
       path: '/hazelnut-chocolate'
       fullPath: '/hazelnut-chocolate'
       preLoaderRoute: typeof HazelnutChocolateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/choco-hazel-whey': {
+      id: '/choco-hazel-whey'
+      path: '/choco-hazel-whey'
+      fullPath: '/choco-hazel-whey'
+      preLoaderRoute: typeof ChocoHazelWheyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,7 +137,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChocoHazelWheyRoute: ChocoHazelWheyRoute,
   HazelnutChocolateRoute: HazelnutChocolateRoute,
+  ProtienHerbsRoute: ProtienHerbsRoute,
+  TrueProteinRoute: TrueProteinRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

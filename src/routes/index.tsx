@@ -1,7 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Leaf, Sparkles, ShieldCheck } from "lucide-react";
+import { ArrowRight, Leaf, Sparkles, ShieldCheck, Zap } from "lucide-react";
 import productImg from "@/assets/product-front.png";
+import protienHerbsImg from "@/assets/protien-herbs-product.png";
+// Using existing image as placeholder - replace with actual Choco-Hazel product image when available
+import chocoHazelWheyImg from "@/assets/product-front.png";
+// Using protien-herbs image as placeholder for True Protein - replace with actual product image when available
+import trueProteinImg from "@/assets/protien-herbs-product.png";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -28,18 +33,39 @@ const PRODUCTS = [
     available: true,
     highlights: ["Complete amino profile", "Gentle digestion", "1B CFU probiotics"],
   },
-  // Add more products here in the future:
-  // {
-  //   id: "vanilla-cream",
-  //   name: "Vanilla Cream",
-  //   slug: "/vanilla-cream",
-  //   description: "Smooth vanilla flavor with complete nutrition",
-  //   image: vanillaImg,
-  //   calories: 115,
-  //   protein: "15g",
-  //   available: false,
-  //   highlights: ["Natural vanilla", "Easy mixing", "Dairy-free"],
-  // },
+  {
+    id: "protien-herbs",
+    name: "Protein & Herbs",
+    slug: "/protien-herbs",
+    description: "23g clean protein, 5.5g BCAA, 0g added sugar — with Ayurvedic herbs for women",
+    image: protienHerbsImg,
+    calories: 124,
+    protein: "23g",
+    available: true,
+    highlights: ["6 Ayurvedic herbs", "Hormonal balance", "Skin & hair support"],
+  },
+  {
+    id: "choco-hazel-whey",
+    name: "Choco-Hazel Whey Protein",
+    slug: "/choco-hazel-whey",
+    description: "15g protein, 3g BCAA, 6.9g EAA — 100% vegetarian whey for beginners",
+    image: chocoHazelWheyImg,
+    calories: 137,
+    protein: "15g",
+    available: true,
+    highlights: ["Heavy metal tested", "Dope free", "GMP certified"],
+  },
+  {
+    id: "true-protein",
+    name: "True Protein",
+    slug: "/true-protein",
+    description: "27g protein, 7g BCAA, 12.6g EAA — India's most transparent whey protein",
+    image: trueProteinImg,
+    calories: 139,
+    protein: "27g",
+    available: true,
+    highlights: ["Amino spiking tested", "Only 4 ingredients", "Heavy metals tested"],
+  },
 ];
 
 function FloatingBlobs() {
