@@ -17,9 +17,9 @@ export const Route = createFileRoute("/hazelnut-chocolate")({
   head: () => ({
     meta: [
       { title: "Trustable — Choco-Hazel Whey Protein for Beginners" },
-      { name: "description", content: "15g protein per serving, 3g BCAA, 6.9g EAA — 100% vegetarian whey protein for beginners." },
+      { name: "description", content: "One scoop (37g) provides 15g protein, 3g BCAA, 6.9g EAA — 100% vegetarian whey protein for beginners." },
       { property: "og:title", content: "Trustable — Choco-Hazel Whey Protein for Beginners" },
-      { property: "og:description", content: "15g protein, 3g BCAA, 0g added sugar — Heavy metal tested, dope free, GMP certified." },
+      { property: "og:description", content: "37g serving = 15g protein, 3g BCAA, 0g added sugar — Heavy metal tested, dope free, GMP certified." },
     ],
   }),
 });
@@ -67,8 +67,8 @@ const TRACE = [
 const PRODUCT_INTRO = {
   name: "Choco-Hazel Whey",
   tagline: "For Beginners",
-  description: "15g protein per serving — heavy metal tested, dope free, and GMP certified. Perfect protein to kickstart your fitness journey.",
-  highlights: ["15g Protein", "3g BCAA", "6.9g EAA"],
+  description: "Take one scoop (37g) and mix in 200ml water — provides 15g of protein. Heavy metal tested, dope free, and GMP certified.",
+  highlights: ["37g Scoop → 15g Protein", "3g BCAA", "6.9g EAA"],
 };
 
 // Label summary for sidebar

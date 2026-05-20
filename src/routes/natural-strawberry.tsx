@@ -17,9 +17,9 @@ export const Route = createFileRoute("/natural-strawberry")({
   head: () => ({
     meta: [
       { title: "Trustable — Natural Strawberry | India's Most Transparent Whey Protein" },
-      { name: "description", content: "27g protein per serving, 7g BCAA, 12.6g EAA — India's most transparent whey protein with only 4 natural ingredients." },
+      { name: "description", content: "One scoop (36g) provides 27g protein, 7g BCAA, 12.6g EAA — India's most transparent whey protein with only 4 natural ingredients." },
       { property: "og:title", content: "Trustable — Natural Strawberry Whey Protein" },
-      { property: "og:description", content: "27g protein, 7g BCAA, 0g added sugar — Amino spiking tested, protein concentration verified, heavy metals tested." },
+      { property: "og:description", content: "36g serving = 27g protein, 7g BCAA, 0g added sugar — Amino spiking tested, protein concentration verified, heavy metals tested." },
     ],
   }),
 });
@@ -63,8 +63,8 @@ const TRACE = [
 const PRODUCT_INTRO = {
   name: "Natural Strawberry",
   tagline: "Most Transparent Whey",
-  description: "27g protein per serving with only 4 natural ingredients. Amino spiking tested, protein concentration verified, heavy metals tested.",
-  highlights: ["27g Protein", "7g BCAA", "4 Ingredients"],
+  description: "Take one scoop (36g) and mix in 200-250ml water — provides 27g of protein with only 4 natural ingredients. Amino spiking tested.",
+  highlights: ["36g Scoop → 27g Protein", "7g BCAA", "4 Ingredients"],
 };
 
 // Label summary for sidebar

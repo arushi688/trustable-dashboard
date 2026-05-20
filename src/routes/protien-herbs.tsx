@@ -17,9 +17,9 @@ export const Route = createFileRoute("/protien-herbs")({
   head: () => ({
     meta: [
       { title: "Trustable — Protein & Herbs | For Women" },
-      { name: "description", content: "23g clean protein with herbs blend — supports better metabolism, energy, skin & hair. Vanilla Almond flavour." },
+      { name: "description", content: "One scoop (33g) provides 23g clean protein with herbs blend — supports better metabolism, energy, skin & hair. Vanilla Almond flavour." },
       { property: "og:title", content: "Trustable — Protein & Herbs For Women" },
-      { property: "og:description", content: "23g clean protein, 5.5g BCAA, 0g added sugar — with Shatavari, Green Tea, Curcumin & more." },
+      { property: "og:description", content: "33g serving = 23g clean protein, 5.5g BCAA, 0g added sugar — with Shatavari, Green Tea, Curcumin & more." },
     ],
   }),
 });
@@ -70,8 +70,8 @@ const TRACE = [
 const PRODUCT_INTRO = {
   name: "Protein & Herbs",
   tagline: "For Women",
-  description: "23g clean protein with a curated blend of 6 Ayurvedic herbs — supports better metabolism, energy, skin & hair.",
-  highlights: ["23g Protein", "5.5g BCAA", "0g Added Sugar"],
+  description: "Take one scoop (33g) and mix in 200ml water — provides 23g of clean protein with 6 Ayurvedic herbs for metabolism, energy, skin & hair.",
+  highlights: ["33g Scoop → 23g Protein", "5.5g BCAA", "0g Added Sugar"],
 };
 
 // Label summary for sidebar
@@ -358,7 +358,7 @@ function LabReport() {
                 </thead>
                 <tbody>
                   {[
-                    { param: "Protein Content (per 32g serving)", spec: "≥ 23g", result: "23.4g", status: "pass" },
+                    { param: "Protein Content (per 33g serving)", spec: "≥ 23g", result: "23.4g", status: "pass" },
                     { param: "BCAA Content", spec: "≥ 5.5g", result: "5.6g", status: "pass" },
                     { param: "Added Sugar", spec: "0g", result: "Not Detected", status: "pass" },
                     { param: "Lead (Pb)", spec: "< 0.5 ppm", result: "< 0.05 ppm", status: "pass" },
