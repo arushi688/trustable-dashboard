@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Leaf, Sparkles, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Award, Sparkles, ShieldCheck, FlaskConical } from "lucide-react";
 import productImg from "@/assets/product-front.png";
 import protienHerbsImg from "@/assets/protien-herbs.png";
 import chocoHazelWheyImg from "@/assets/choco-hazel.png";
@@ -11,10 +11,10 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Trustable — Plant-Based Nutrition Products" },
-      { name: "description", content: "Explore our range of transparent, plant-based daily nutrition products with full lab reports and ingredient traceability." },
-      { property: "og:title", content: "Trustable — Plant-Based Nutrition" },
-      { property: "og:description", content: "Comfort-first plant-based nutrition with complete transparency." },
+      { title: "Trustable — Premium Nutrition Products" },
+      { name: "description", content: "Explore our range of transparent, lab-tested nutrition products with full lab reports and ingredient traceability." },
+      { property: "og:title", content: "Trustable — Premium Nutrition" },
+      { property: "og:description", content: "India's most transparent nutrition brand with complete traceability." },
     ],
   }),
 });
@@ -40,6 +40,7 @@ const PRODUCTS = [
     image: protienHerbsImg,
     calories: 124,
     protein: "23g",
+    serving: "1 scoop (~23g) in 200ml",
     available: true,
     highlights: ["6 Ayurvedic herbs", "Hormonal balance", "Skin & hair support"],
   },
@@ -51,6 +52,7 @@ const PRODUCTS = [
     image: chocoHazelWheyImg,
     calories: 137,
     protein: "15g",
+    serving: "1 scoop (~15g) in 200ml",
     available: true,
     highlights: ["Heavy metal tested", "Dope free", "GMP certified"],
   },
@@ -62,6 +64,7 @@ const PRODUCTS = [
     image: naturalStrawberryImg,
     calories: 139,
     protein: "27g",
+    serving: "1 scoop (~27g) in 200-250ml",
     available: true,
     highlights: ["Amino spiking tested", "Only 4 ingredients", "Heavy metals tested"],
   },
@@ -117,33 +120,18 @@ function Home() {
               transition={{ delay: 0.2 }}
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-gradient-to-r from-card/80 to-card/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground backdrop-blur-xl shadow-sm"
             >
-              <Leaf className="h-3.5 w-3.5 text-secondary-foreground" /> Plant-Based Nutrition
+              <Award className="h-3.5 w-3.5 text-secondary-foreground" /> Premium Nutrition
             </motion.div>
 
             <h1 className="font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl xl:text-8xl">
-              Transparent <br />
-              <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text italic text-transparent">Nutrition</span> <br />
-              <span className="text-foreground/90">for Everyone</span>
+              India's Most <br />
+              <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text italic text-transparent">Transparent</span> <br />
+              <span className="text-foreground/90">Nutrition Brand</span>
             </h1>
 
             <p className="mt-6 mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Comfort-first, plant-based daily nutrition with complete transparency. Every ingredient sourced, tested, and traceable.
+              Premium nutrition with complete transparency. Every batch lab-tested for purity and quality. Track every ingredient from source to your door.
             </p>
-
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link
-                to="/hazelnut-chocolate"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-primary to-primary/90 px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-all hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/40"
-              >
-                View Products <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <a
-                href="#products"
-                className="group inline-flex items-center gap-2.5 rounded-full border border-border bg-card/70 px-8 py-4 text-base font-semibold text-foreground backdrop-blur-xl transition-all hover:bg-card hover:shadow-lg"
-              >
-                Learn More
-              </a>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -156,12 +144,12 @@ function Home() {
               {
                 icon: ShieldCheck,
                 title: "Lab Verified",
-                description: "Every batch tested by third-party labs for purity and potency",
+                description: "Every batch tested by third-party labs for heavy metals, amino spiking, and purity",
               },
               {
-                icon: Leaf,
-                title: "100% Plant-Based",
-                description: "Sustainable nutrition that's better for you and the planet",
+                icon: FlaskConical,
+                title: "100% Vegetarian",
+                description: "Premium nutrition sourced from quality ingredients, GMP certified",
               },
               {
                 icon: Sparkles,
@@ -230,7 +218,7 @@ function Home() {
                     </h3>
                     <p className="mb-4 text-sm text-muted-foreground">{product.description}</p>
                     
-                    <div className="mb-4 flex gap-4 text-sm">
+                    <div className="mb-4 flex flex-wrap gap-4 text-sm">
                       <div>
                         <span className="font-semibold text-foreground">{product.calories}</span>
                         <span className="text-muted-foreground"> cal</span>
@@ -239,6 +227,10 @@ function Home() {
                         <span className="font-semibold text-foreground">{product.protein}</span>
                         <span className="text-muted-foreground"> protein</span>
                       </div>
+                    </div>
+                    
+                    <div className="mb-4 text-xs text-muted-foreground">
+                      <span className="font-medium text-foreground/80">Serving:</span> {product.serving}
                     </div>
 
                     <div className="flex flex-wrap gap-2">
@@ -262,6 +254,14 @@ function Home() {
               </motion.div>
             ))}
           </div>
+          
+          {/* More Products Coming Soon */}
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-3 rounded-full border border-border/60 bg-card/60 px-6 py-3 text-sm text-muted-foreground backdrop-blur-sm">
+              <span className="h-2 w-2 rounded-full bg-primary/60 animate-pulse" />
+              More products adding soon
+            </div>
+          </div>
         </div>
       </section>
 
@@ -274,7 +274,7 @@ function Home() {
               Trustable
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Comfort-first daily nutrition. Transparent by design.
+              India's most transparent nutrition brand. Lab-tested, fully traceable.
             </p>
             <div className="mt-6 flex justify-center gap-4 text-xs text-muted-foreground">
               <span>© {new Date().getFullYear()} Trustable. All rights reserved.</span>

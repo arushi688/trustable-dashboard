@@ -14,8 +14,6 @@ type NavbarProps = {
 
 const NAV_LINKS = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/hazelnut-chocolate", label: "Products", icon: Package },
-  { href: "#about", label: "About", icon: Info, isAnchor: true },
 ];
 
 export function Navbar({
@@ -249,22 +247,6 @@ export function Navbar({
             >
               Trustable
             </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
-              <Link
-                to="/hazelnut-chocolate"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Products
-              </Link>
-              <a
-                href="#about"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                About
-              </a>
-            </div>
 
             {/* Hamburger Menu - Mobile */}
             <button
