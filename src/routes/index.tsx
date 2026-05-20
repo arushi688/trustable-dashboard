@@ -46,7 +46,7 @@ const PRODUCTS = [
   {
     id: "choco-hazel-whey",
     name: "Choco-Hazel Whey Protein",
-    slug: "/choco-hazel-whey",
+    slug: "/hazelnut-chocolate",
     description: "15g protein, 3g BCAA, 6.9g EAA — 100% vegetarian whey for beginners",
     image: chocoHazelWheyImg,
     calories: 137,

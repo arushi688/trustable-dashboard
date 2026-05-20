@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProtienHerbsRouteImport } from './routes/protien-herbs'
 import { Route as NaturalStrawberryRouteImport } from './routes/natural-strawberry'
 import { Route as HazelnutChocolateRouteImport } from './routes/hazelnut-chocolate'
-import { Route as ChocoHazelWheyRouteImport } from './routes/choco-hazel-whey'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ProtienHerbsRoute = ProtienHerbsRouteImport.update({
@@ -30,11 +29,6 @@ const HazelnutChocolateRoute = HazelnutChocolateRouteImport.update({
   path: '/hazelnut-chocolate',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ChocoHazelWheyRoute = ChocoHazelWheyRouteImport.update({
-  id: '/choco-hazel-whey',
-  path: '/choco-hazel-whey',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,14 +37,12 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/choco-hazel-whey': typeof ChocoHazelWheyRoute
   '/hazelnut-chocolate': typeof HazelnutChocolateRoute
   '/natural-strawberry': typeof NaturalStrawberryRoute
   '/protien-herbs': typeof ProtienHerbsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/choco-hazel-whey': typeof ChocoHazelWheyRoute
   '/hazelnut-chocolate': typeof HazelnutChocolateRoute
   '/natural-strawberry': typeof NaturalStrawberryRoute
   '/protien-herbs': typeof ProtienHerbsRoute
@@ -58,7 +50,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/choco-hazel-whey': typeof ChocoHazelWheyRoute
   '/hazelnut-chocolate': typeof HazelnutChocolateRoute
   '/natural-strawberry': typeof NaturalStrawberryRoute
   '/protien-herbs': typeof ProtienHerbsRoute
@@ -67,21 +58,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/choco-hazel-whey'
     | '/hazelnut-chocolate'
     | '/natural-strawberry'
     | '/protien-herbs'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/choco-hazel-whey'
-    | '/hazelnut-chocolate'
-    | '/natural-strawberry'
-    | '/protien-herbs'
+  to: '/' | '/hazelnut-chocolate' | '/natural-strawberry' | '/protien-herbs'
   id:
     | '__root__'
     | '/'
-    | '/choco-hazel-whey'
     | '/hazelnut-chocolate'
     | '/natural-strawberry'
     | '/protien-herbs'
@@ -89,7 +73,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ChocoHazelWheyRoute: typeof ChocoHazelWheyRoute
   HazelnutChocolateRoute: typeof HazelnutChocolateRoute
   NaturalStrawberryRoute: typeof NaturalStrawberryRoute
   ProtienHerbsRoute: typeof ProtienHerbsRoute
@@ -118,13 +101,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HazelnutChocolateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/choco-hazel-whey': {
-      id: '/choco-hazel-whey'
-      path: '/choco-hazel-whey'
-      fullPath: '/choco-hazel-whey'
-      preLoaderRoute: typeof ChocoHazelWheyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -137,7 +113,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ChocoHazelWheyRoute: ChocoHazelWheyRoute,
   HazelnutChocolateRoute: HazelnutChocolateRoute,
   NaturalStrawberryRoute: NaturalStrawberryRoute,
   ProtienHerbsRoute: ProtienHerbsRoute,

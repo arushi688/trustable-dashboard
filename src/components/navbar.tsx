@@ -366,7 +366,7 @@ export function Navbar({
                     <span className="font-medium">Protein & Herbs</span>
                   </Link>
                   <Link
-                    to="/choco-hazel-whey"
+                    to="/hazelnut-chocolate"
                     onClick={() => setIsOpen(false)}
                     className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-foreground hover:bg-muted transition-all"
                   >
