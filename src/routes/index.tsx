@@ -21,17 +21,17 @@ export const Route = createFileRoute("/")({
 
 // Product catalog - Add new products here
 const PRODUCTS = [
-  {
-    id: "hazelnut-chocolate",
-    name: "Hazelnut Chocolate",
-    slug: "/hazelnut-chocolate",
-    description: "15g plant protein, 23 vitamins & minerals, 0 added sugar",
-    image: productImg,
-    calories: 110,
-    protein: "15g",
-    available: true,
-    highlights: ["Complete amino profile", "Gentle digestion", "1B CFU probiotics"],
-  },
+  // {
+  //   id: "hazelnut-chocolate",
+  //   name: "Hazelnut Chocolate",
+  //   slug: "/hazelnut-chocolate",
+  //   description: "15g plant protein, 23 vitamins & minerals, 0 added sugar",
+  //   image: productImg,
+  //   calories: 110,
+  //   protein: "15g",
+  //   available: true,
+  //   highlights: ["Complete amino profile", "Gentle digestion", "1B CFU probiotics"],
+  // },
   {
     id: "protien-herbs",
     name: "Protein & Herbs",

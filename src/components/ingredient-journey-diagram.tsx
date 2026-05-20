@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Factory, Home, ChevronDown } from "lucide-react";
+import { MapPin, Factory, GlassWater, ChevronDown } from "lucide-react";
 
 export type IngredientOrigin = {
   name: string;
@@ -154,7 +154,7 @@ export function IngredientJourneyDiagram({
           </motion.div>
         </div>
 
-        {/* Row 3: Your Place */}
+        {/* Row 3: Your Glass */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -167,13 +167,13 @@ export function IngredientJourneyDiagram({
               whileHover={{ scale: 1.1, rotate: -5 }}
               className="mx-auto mb-3 w-14 h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg"
             >
-              <Home className="w-7 h-7 text-white" />
+              <GlassWater className="w-7 h-7 text-white" />
             </motion.div>
             <h4 className="font-semibold text-foreground text-lg mb-1">
-              Your Place
+              Your Glass
             </h4>
             <p className="text-muted-foreground text-sm">
-              Delivered to You
+              Ready to Enjoy
             </p>
           </div>
         </motion.div>
@@ -251,7 +251,7 @@ export function IngredientJourneyDiagram({
           </motion.div>
         </div>
 
-        {/* Your Place */}
+        {/* Your Glass */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -260,13 +260,13 @@ export function IngredientJourneyDiagram({
           className="bg-primary/10 rounded-xl p-4 border border-border/50 shadow-sm text-center"
         >
           <div className="mx-auto mb-2 w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-md">
-            <Home className="w-5 h-5 text-white" />
+            <GlassWater className="w-5 h-5 text-white" />
           </div>
           <h4 className="font-semibold text-foreground text-base mb-0.5">
-            Your Place
+            Your Glass
           </h4>
           <p className="text-muted-foreground text-xs">
-            Delivered to You
+            Ready to Enjoy
           </p>
         </motion.div>
       </div>
