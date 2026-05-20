@@ -13,6 +13,7 @@ import {
 } from "recharts";
 import productImg from "@/assets/product-front.png";
 import labReportPdf from "@/assets/Trustable_Test_Report.pdf";
+import { Navbar } from "@/components/navbar";
 
 export const Route = createFileRoute("/hazelnut-chocolate")({
   component: HazelnutChocolate,
@@ -250,34 +251,58 @@ function QuickStats() {
 }
 
 function Tabs({ active, setActive }: { active: string; setActive: (s: string) => void }) {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = labReportPdf;
+    link.download = "Trustable_Lab_Report_Hazelnut_Chocolate.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className="sticky top-0 z-40 -mx-6 mt-20 border-y border-border/60 bg-background/80 px-6 backdrop-blur-2xl shadow-sm">
-      <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto py-4 scrollbar-hide">
-        {TABS.map((t) => (
-          <button
-            key={t.id}
-            onClick={() => {
-              setActive(t.id);
-              document.getElementById(t.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-            className={`relative whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
-              active === t.id
-                ? "bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25 scale-105"
-                : "text-muted-foreground hover:bg-muted/80 hover:text-foreground hover:scale-105"
-            }`}
-          >
-            {t.label}
-            {active === t.id && (
-              <motion.div
-                layoutId="activeTab"
-                className="absolute inset-0 -z-10 rounded-full bg-primary"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-              />
-            )}
-          </button>
-        ))}
+    <>
+      {/* Mobile: Fixed Navbar */}
+      <div className="md:hidden">
+        <Navbar
+          variant="product"
+          tabs={TABS}
+          activeTab={active}
+          onTabChange={setActive}
+          onDownload={handleDownload}
+          productName="Hazelnut Chocolate"
+        />
       </div>
-    </div>
+      
+      {/* Desktop: Sticky Tabs */}
+      <div className="hidden md:block sticky top-0 z-40 -mx-6 mt-20 border-y border-border/60 bg-background/80 px-6 backdrop-blur-2xl shadow-sm">
+        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto py-4 scrollbar-hide">
+          {TABS.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => {
+                setActive(t.id);
+                document.getElementById(t.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className={`relative whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                active === t.id
+                  ? "bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25 scale-105"
+                  : "text-muted-foreground hover:bg-muted/80 hover:text-foreground hover:scale-105"
+              }`}
+            >
+              {t.label}
+              {active === t.id && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute inset-0 -z-10 rounded-full bg-primary"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 

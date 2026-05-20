@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 import labReportPdf from "@/assets/Trustable_Test_Report.pdf";
 import { IngredientTraceabilityJourney } from "@/components/ingredient-traceability-journey";
+import { IngredientJourneyDiagram } from "@/components/ingredient-journey-diagram";
+import { Navbar } from "@/components/navbar";
 
 export const Route = createFileRoute("/protien-herbs")({
   component: ProtienHerbs,
@@ -284,41 +286,14 @@ function Tabs({ active, setActive }: { active: string; setActive: (s: string) =>
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-40 border-b border-border/60 bg-background/80 px-6 backdrop-blur-2xl shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between py-3">
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => {
-                setActive(t.id);
-                document.getElementById(t.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className={`relative whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
-                active === t.id
-                  ? "bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25 scale-105"
-                  : "text-muted-foreground hover:bg-muted/80 hover:text-foreground hover:scale-105"
-              }`}
-            >
-              {t.label}
-              {active === t.id && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 -z-10 rounded-full bg-primary"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
-        <button
-          onClick={handleDownload}
-          className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-all hover:scale-105 hover:shadow-lg"
-        >
-          <Download className="h-4 w-4" /> Lab Report
-        </button>
-      </div>
-    </div>
+    <Navbar
+      variant="product"
+      tabs={TABS}
+      activeTab={active}
+      onTabChange={setActive}
+      onDownload={handleDownload}
+      productName="Protein & Herbs"
+    />
   );
 }
 
@@ -677,6 +652,15 @@ function ProtienHerbs() {
           <main className="flex-1 min-w-0">
             <Hero />
             <QuickStats />
+            <IngredientJourneyDiagram 
+              ingredients={[
+                { name: "Whey Protein", origin: "Pune, Maharashtra" },
+                { name: "Shatavari Root", origin: "Nasik, Maharashtra" },
+                { name: "Green Tea", origin: "Nilgiris, Tamil Nadu" },
+                { name: "Curcumin", origin: "Erode, Tamil Nadu" },
+              ]}
+              manufacturingLocation="Delhi"
+            />
             <LabReport />
             <Traceability />
             <Label />

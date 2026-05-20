@@ -2,11 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Leaf, Sparkles, ShieldCheck, Zap } from "lucide-react";
 import productImg from "@/assets/product-front.png";
-import protienHerbsImg from "@/assets/protien-herbs-product.png";
-// Using existing image as placeholder - replace with actual Choco-Hazel product image when available
-import chocoHazelWheyImg from "@/assets/product-front.png";
-// Using protien-herbs image as placeholder for True Protein - replace with actual product image when available
-import trueProteinImg from "@/assets/protien-herbs-product.png";
+import protienHerbsImg from "@/assets/protien-herbs.png";
+import chocoHazelWheyImg from "@/assets/choco-hazel.png";
+import naturalStrawberryImg from "@/assets/natural-strawberry.png";
+import { Navbar } from "@/components/navbar";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -56,11 +55,11 @@ const PRODUCTS = [
     highlights: ["Heavy metal tested", "Dope free", "GMP certified"],
   },
   {
-    id: "true-protein",
-    name: "True Protein",
-    slug: "/true-protein",
+    id: "natural-strawberry",
+    name: "Natural Strawberry",
+    slug: "/natural-strawberry",
     description: "27g protein, 7g BCAA, 12.6g EAA — India's most transparent whey protein",
-    image: trueProteinImg,
+    image: naturalStrawberryImg,
     calories: 139,
     protein: "27g",
     available: true,
@@ -101,29 +100,7 @@ function Home() {
       `}</style>
 
       {/* Header */}
-      <header className="relative z-10 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto max-w-7xl px-6 py-6">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="font-serif text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Trustable
-            </Link>
-            <div className="flex items-center gap-6">
-              <Link 
-                to="/hazelnut-chocolate" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Products
-              </Link>
-              <a 
-                href="#about" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                About
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar variant="home" />
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-24 sm:pt-28 sm:pb-32">

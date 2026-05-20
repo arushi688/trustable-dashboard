@@ -99,11 +99,11 @@ export const CHOCO_HAZEL_WHEY_INGREDIENTS: IngredientData[] = [
   },
 ];
 
-// States to highlight for True Protein (Maharashtra, Himachal Pradesh, Karnataka)
-export const TRUE_PROTEIN_HIGHLIGHT_STATES = ["Maharashtra", "Himachal Pradesh", "Karnataka"];
+// States to highlight for Natural Strawberry (Maharashtra, Himachal Pradesh, Karnataka)
+export const NATURAL_STRAWBERRY_HIGHLIGHT_STATES = ["Maharashtra", "Himachal Pradesh", "Karnataka"];
 
-// Ingredients for True Protein Strawberry
-export const TRUE_PROTEIN_INGREDIENTS: IngredientData[] = [
+// Ingredients for Natural Strawberry Whey Protein
+export const NATURAL_STRAWBERRY_INGREDIENTS: IngredientData[] = [
   {
     name: "Whey Protein Isolate",
     origin: "Pune, Maharashtra",

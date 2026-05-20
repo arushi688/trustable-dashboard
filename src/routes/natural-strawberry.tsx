@@ -8,15 +8,17 @@ import {
   Instagram, Twitter, Facebook, Mail,
 } from "lucide-react";
 import labReportPdf from "@/assets/Trustable_Test_Report.pdf";
-import { IngredientTraceabilityJourney, TRUE_PROTEIN_INGREDIENTS, TRUE_PROTEIN_HIGHLIGHT_STATES } from "@/components/ingredient-traceability-journey";
+import { IngredientTraceabilityJourney, NATURAL_STRAWBERRY_INGREDIENTS, NATURAL_STRAWBERRY_HIGHLIGHT_STATES } from "@/components/ingredient-traceability-journey";
+import { IngredientJourneyDiagram } from "@/components/ingredient-journey-diagram";
+import { Navbar } from "@/components/navbar";
 
-export const Route = createFileRoute("/true-protein")({
-  component: TrueProtein,
+export const Route = createFileRoute("/natural-strawberry")({
+  component: NaturalStrawberry,
   head: () => ({
     meta: [
-      { title: "Trustable — True Protein | India's Most Transparent Whey Protein" },
+      { title: "Trustable — Natural Strawberry | India's Most Transparent Whey Protein" },
       { name: "description", content: "27g protein per serving, 7g BCAA, 12.6g EAA — India's most transparent whey protein with only 4 natural ingredients." },
-      { property: "og:title", content: "Trustable — True Protein Strawberry" },
+      { property: "og:title", content: "Trustable — Natural Strawberry Whey Protein" },
       { property: "og:description", content: "27g protein, 7g BCAA, 0g added sugar — Amino spiking tested, protein concentration verified, heavy metals tested." },
     ],
   }),
@@ -59,7 +61,7 @@ const TRACE = [
 
 // Short intro for sidebar
 const PRODUCT_INTRO = {
-  name: "True Protein",
+  name: "Natural Strawberry",
   tagline: "Most Transparent Whey",
   description: "27g protein per serving with only 4 natural ingredients. Amino spiking tested, protein concentration verified, heavy metals tested.",
   highlights: ["27g Protein", "7g BCAA", "4 Ingredients"],
@@ -253,7 +255,7 @@ function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1 className="font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
-            True Protein <span className="text-primary">Strawberry</span>
+            Natural <span className="text-primary">Strawberry</span>
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
             27g protein · 7g BCAA · 12.6g EAA · Only 4 Ingredients · 1kg
@@ -297,48 +299,21 @@ function Tabs({ active, setActive }: { active: string; setActive: (s: string) =>
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = labReportPdf;
-    link.download = "Trustable_Lab_Report_True_Protein.pdf";
+    link.download = "Trustable_Lab_Report_Natural_Strawberry.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-40 border-b border-border/60 bg-background/80 px-6 backdrop-blur-2xl shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between py-3">
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => {
-                setActive(t.id);
-                document.getElementById(t.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className={`relative whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
-                active === t.id
-                  ? "bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25 scale-105"
-                  : "text-muted-foreground hover:bg-muted/80 hover:text-foreground hover:scale-105"
-              }`}
-            >
-              {t.label}
-              {active === t.id && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 -z-10 rounded-full bg-primary"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
-        <button
-          onClick={handleDownload}
-          className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-all hover:scale-105 hover:shadow-lg"
-        >
-          <Download className="h-4 w-4" /> Lab Report
-        </button>
-      </div>
-    </div>
+    <Navbar
+      variant="product"
+      tabs={TABS}
+      activeTab={active}
+      onTabChange={setActive}
+      onDownload={handleDownload}
+      productName="Natural Strawberry"
+    />
   );
 }
 
@@ -365,7 +340,7 @@ function LabReport() {
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Test Report</p>
                   <h3 className="text-lg font-bold text-foreground">Certificate of Analysis</h3>
-                  <p className="text-xs text-muted-foreground mt-0.5">True Protein Strawberry (1kg)</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Natural Strawberry Whey Protein (1kg)</p>
                 </div>
                 <div className="text-right">
                   <div className="inline-flex items-center gap-1.5 rounded-md bg-green-50 border border-green-200 px-2.5 py-1 text-xs font-semibold text-green-700">
@@ -378,10 +353,10 @@ function LabReport() {
             {/* Report Meta */}
             <div className="grid grid-cols-2 sm:grid-cols-4 border-b border-border text-xs">
               {[
-                { label: "Report No.", value: "TRB/2026/TPS-001" },
+                { label: "Report No.", value: "TRB/2026/NS-001" },
                 { label: "Date of Analysis", value: "18 May 2026" },
                 { label: "Lab", value: "Eurofins (NABL)" },
-                { label: "Batch No.", value: "TPS26A27" },
+                { label: "Batch No.", value: "NS26A27" },
               ].map((m) => (
                 <div key={m.label} className="px-4 py-3 border-r last:border-r-0 border-border">
                   <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-0.5">{m.label}</div>
@@ -666,8 +641,8 @@ function Traceability() {
   return (
     <section id="trace" className="scroll-mt-24">
       <IngredientTraceabilityJourney 
-        ingredients={TRUE_PROTEIN_INGREDIENTS} 
-        highlightStates={TRUE_PROTEIN_HIGHLIGHT_STATES}
+        ingredients={NATURAL_STRAWBERRY_INGREDIENTS} 
+        highlightStates={NATURAL_STRAWBERRY_HIGHLIGHT_STATES}
       />
     </section>
   );
@@ -785,7 +760,7 @@ function StickyCTA() {
   );
 }
 
-function TrueProtein() {
+function NaturalStrawberry() {
   const [active, setActive] = useState("overview");
 
   useEffect(() => {
@@ -828,6 +803,15 @@ function TrueProtein() {
           <main className="flex-1 min-w-0">
             <Hero />
             <QuickStats />
+            <IngredientJourneyDiagram 
+              ingredients={[
+                { name: "Whey Isolate", origin: "Pune, Maharashtra" },
+                { name: "Whey Concentrate", origin: "Mumbai, Maharashtra" },
+                { name: "Strawberry", origin: "Kullu, Himachal" },
+                { name: "Stevia", origin: "Belgaum, Karnataka" },
+              ]}
+              manufacturingLocation="Delhi"
+            />
             <LabReport />
             <Traceability />
             <Label />
