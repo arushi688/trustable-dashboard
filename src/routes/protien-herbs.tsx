@@ -7,7 +7,7 @@ import {
   Heart, Zap, Activity, X, Globe2, Download,
   Instagram, Twitter, Facebook, Mail,
 } from "lucide-react";
-import labReportPdf from "@/assets/Trustable_Test_Report_Vanilla_Almond.pdf";
+import labReportPdf from "@/assets/Trustable_Test_Report_Vanilla_Almond_NEW (1).pdf";
 import { IngredientTraceabilityJourney } from "@/components/ingredient-traceability-journey";
 import { IngredientJourneyDiagram } from "@/components/ingredient-journey-diagram";
 import { Navbar } from "@/components/navbar";
