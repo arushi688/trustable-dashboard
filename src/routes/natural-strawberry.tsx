@@ -7,7 +7,7 @@ import {
   Heart, Zap, Activity, X, Globe2, Download,
   Instagram, Twitter, Facebook, Mail,
 } from "lucide-react";
-import labReportPdf from "@/assets/Trustable_Test_Report.pdf";
+import labReportPdf from "@/assets/Trustable_Test_Report_Strawberry_Whey.pdf";
 import { IngredientTraceabilityJourney, NATURAL_STRAWBERRY_INGREDIENTS, NATURAL_STRAWBERRY_HIGHLIGHT_STATES } from "@/components/ingredient-traceability-journey";
 import { IngredientJourneyDiagram } from "@/components/ingredient-journey-diagram";
 import { Navbar } from "@/components/navbar";

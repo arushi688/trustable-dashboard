@@ -7,7 +7,7 @@ import {
   Heart, Zap, Activity, X, Globe2, Download,
   Instagram, Twitter, Facebook, Mail,
 } from "lucide-react";
-import labReportPdf from "@/assets/Trustable_Test_Report.pdf";
+import labReportPdf from "@/assets/Choco-Hazel.pdf";
 import { IngredientTraceabilityJourney, CHOCO_HAZEL_WHEY_INGREDIENTS, CHOCO_HAZEL_HIGHLIGHT_STATES } from "@/components/ingredient-traceability-journey";
 import { IngredientJourneyDiagram } from "@/components/ingredient-journey-diagram";
 import { Navbar } from "@/components/navbar";
